@@ -10,12 +10,26 @@
   privat: false
  };
 
- const question1 = prompt('Один из последних просмотренных филльмов?', ''),
- question2 = prompt('На сколько оцените его?',''),
- question3 = prompt('Один из последних просмотренных филльмов?', ''),
- question4 = prompt('На сколько оцените его?','');
- 
- personalMovieDB.movies[question1] = question2;
- personalMovieDB.movies[question3] = question4;
+for (let i = 0; i < 2; i++) {
+
+ const a = prompt('Один из последних просмотренных филльмов?', ''),
+       b = prompt('На сколько оцените его?','');
+
+  if (a !== '' && b !== '' && a !== null && b !== null && a.length < 50) {
+    personalMovieDB.movies[a] = b;
+  } else {
+    i--
+  }   
+}
+
+if(personalMovieDB.count < 10) {
+  console.log('Просмотренно сликшом мало фильмов');
+} else if(personalMovieDB.count === 10 && personalMovieDB.count <= 30) {
+  console.log('Вы класический зритель');
+} else if(personalMovieDB.count > 30) {
+  console.log('Вы киноман');
+} else {
+  console.log('произошла ошибка');
+}
 
  console.log(personalMovieDB);
